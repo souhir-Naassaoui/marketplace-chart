@@ -4,6 +4,12 @@ Expand the name of the chart.
 {{- define "marketplace-back.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
+{{- define "laforge.labels" -}}
+app.kubernetes.io/name: {{ .Chart.Name }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/version: {{ .Chart.Version }}
+app.kubernetes.io/managed-by: Helm
+{{- end -}}
 
 {{/*
 Create a default fully qualified app name.
